@@ -1,5 +1,7 @@
 # The Backend Code Folder
 
+Wix provides the hosted runtime for this site. This repository contains `contentAdmin.web.js`, which performs Wix CMS operations for the admin panel after a server-side Admin permission check and role check; it does not implement a separate server or HTTP endpoint. The wildcard defaults in `permissions.json` are owner-only to avoid exposing legacy web modules accidentally. See `docs/admin-panel-wix-cms.md` for the required CMS collections and page setup.
+
 This folder contains the backend code files for your site. These files correspond to the ones found in the [**Backend**](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#backend) section of the **Public & Backend** 
 ![image](https://user-images.githubusercontent.com/89579857/184862813-e55cdd98-b723-4d64-b73c-593eb9af21c7.png) tab in the Velo sidebar. Add the following files to this folder to include them in your site:
 + [**Web Modules:**](https://support.wix.com/en/article/velo-web-modules-calling-backend-code-from-the-frontend)  

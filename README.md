@@ -1,45 +1,58 @@
-# Git Integration & Wix CLI <img align="left" src="https://user-images.githubusercontent.com/89579857/185785022-cab37bf5-26be-4f11-85f0-1fac63c07d3b.png">
+# Portafolio profesional en GitHub
 
-This repo is part of Git Integration & Wix CLI, a set of tools that allows you to write, test, and publish code for your Wix site locally on your computer. 
+Este repositorio contiene código de páginas Wix/Velo y un panel para administrar contenido de páginas y productos/servicios con Wix CMS, además de documentar un flujo profesional de colaboración.
 
-Connect your site to GitHub, develop in your favorite IDE, test your code in real time, and publish your site from the command line.
+**Wix aloja y ejecuta el sitio; este proyecto no implementa un servidor propio.** El panel usa métodos backend de Wix protegidos para administradores. Para activarlo, primero hay que crear las colecciones CMS y la página visual en Wix Editor; el [paso a paso del panel](docs/admin-panel-wix-cms.md) documenta el esquema, controles e IDs requeridos. Las páginas actuales son plantillas Velo y deben conectarse al CMS desde Wix Editor para mostrar contenido editado.
 
-## Set up this repository in your IDE
-This repo is connected to a Wix site. That site tracks this repo's default branch. Any code committed and pushed to that branch from your local IDE appears on the site.
+## Qué demuestra este proyecto
 
-Before getting started, make sure you have the following things installed:
-* [Git](https://git-scm.com/download)
-* [Node](https://nodejs.org/en/download/), version 14.8 or later.
-* [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://yarnpkg.com/getting-started/install)
-* An SSH key [added to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+- **Git y colaboración:** una rama por cambio, commits descriptivos y pull requests revisables antes de integrar.
+- **Seguimiento del trabajo:** plantillas de issues para describir errores y proponer mejoras con contexto y criterios de aceptación.
+- **Integración continua:** GitHub Actions instala las dependencias y ejecuta ESLint en cada pull request dirigido a `main`.
+- **Documentación:** instrucciones para preparar el entorno, contribuir y explicar las decisiones del proyecto.
+- **Panel Wix CMS:** CRUD de textos e imágenes de páginas y catálogo de productos/servicios, con autorización verificada en backend.
+- **Wix/Velo:** el código de páginas permanece vinculado a las páginas del sitio; Wix gestiona el alojamiento y los cambios visuales se hacen en el editor Wix.
 
-To set up your local environment and start coding locally, do the following:
+La guía [Cómo presentar este proyecto](docs/guia-github-profesional.md) explica el flujo paso a paso, los conceptos que conviene dominar y cómo mostrar este trabajo en una entrevista.
 
-1. Open your terminal and navigate to where you want to store the repo.
-1. Clone the repo by running `git clone <your-repository-url>`.
-1. Navigate to the repo's directory by running `cd <directory-name>`.
-1. Install the repo's dependencies by running `npm install` or `yarn install`.
-1. Install the Wix CLI by running `npm install -g @wix/cli` or `yarn global add @wix/cli`.  
-   Once you've installed the CLI globally, you can use it with any Wix site's repo.
+## Empezar en local
 
-For more information, see [Setting up Git Integration & Wix CLI](https://support.wix.com/en/article/velo-setting-up-git-integration-wix-cli-beta).
+Necesitas Git, Node.js 14.8 o posterior y npm. Para desarrollar el sitio también necesitas acceso al sitio Wix conectado y Wix CLI.
 
-## Write Velo code in your IDE
-Once your repo is set up, you can write code in it as you would in any other non-Wix project. The repo's file structure matches the [public](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#public), [backend](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#backend), and [page code](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#page-code) sections in Editor X.
+```bash
+git clone <URL-del-repositorio>
+cd <carpeta-del-repositorio>
+npm install
+npm run lint
+npm run dev
+```
 
-Learn more about [this repo's file structure](https://support.wix.com/en/article/velo-understanding-your-sites-github-repository-beta).
+`npm run dev` inicia el entorno local de Wix y requiere acceso al sitio conectado; puede solicitar iniciar sesión. No es un servidor independiente para desplegar fuera de Wix. Consulta [Contribuir](CONTRIBUTING.md) para el flujo de ramas y pull requests.
 
-## Test your code with the Local Editor
-The Local Editor allows you test changes made to your site in real time. The code in your local IDE is synced with the Local Editor, so you can test your changes before committing them to your repo. You can also change the site design in the Local Editor and sync it with your IDE.
+> **Importante:** Wix sincroniza el sitio con la rama predeterminada. No integres cambios en `main` hasta revisarlos en el entorno de Wix y contar con la aprobación correspondiente.
 
-Start the Local Editor by navigating to this repo's directory in your terminal and running `wix dev`.
+## Estructura destacada
 
-For more information, see [Working with the Local Editor](https://support.wix.com/en/article/velo-working-with-the-local-editor-beta).
+```text
+.github/
+  ISSUE_TEMPLATE/       Formularios para errores y mejoras
+  workflows/ci.yml      Revisión automática de estilo
+  pull_request_template.md
+docs/                   Guía de habilidades y presentación
+src/pages/              Código asociado a las páginas Wix
+CONTRIBUTING.md         Flujo para contribuir
+```
 
-## Preview and publish with the Wix CLI
-The Wix CLI is a tool that allows you to work with your site locally from your computer's terminal. You can use it to build a preview version of your site and publish it. You can also use the CLI to install [approved npm packages](https://support.wix.com/en/article/velo-working-with-npm-packages) to your site.
+## Validaciones
 
-Learn more about [working with the Wix CLI](https://support.wix.com/en/article/velo-working-with-the-wix-cli-beta).
+- `npm run lint`: ejecuta ESLint con las reglas recomendadas por Wix.
+- GitHub Actions ejecuta esa misma validación en pull requests dirigidos a `main`.
+- `npm run dev`: permite revisar el sitio con Wix Local Editor; no es una prueba automatizada ni un servidor de producción propio.
 
-## Invite contributors to work with you
-Git Integration & Wix CLI extends Editor X's [concurrent editing](https://support.wix.com/en/article/editor-x-about-concurrent-editing) capabilities. Invite other developers as collaborators on your [site](https://support.wix.com/en/article/inviting-people-to-contribute-to-your-site) and your [GitHub repo](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository). Multiple developers can work on a site's code at once.
+Los checks locales y el workflow deben ejecutarse en el entorno configurado antes de afirmar que pasaron. El código del panel requiere la configuración manual descrita en su guía; no se han creado las colecciones/página Wix ni se ha probado contra el CMS real. Esta documentación no afirma que ya se hayan creado issues, pull requests, ni ejecuciones remotas.
+
+## Recursos
+
+- [GitHub: flujo de GitHub](https://docs.github.com/get-started/using-github/github-flow)
+- [GitHub: GitHub Actions](https://docs.github.com/actions)
+- [Wix: configurar Git Integration y Wix CLI](https://support.wix.com/en/article/velo-setting-up-git-integration-wix-cli-beta)

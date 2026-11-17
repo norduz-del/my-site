@@ -1,0 +1,27 @@
+name: Proponer una mejora
+description: Propón una mejora concreta para el sitio o su flujo de desarrollo.
+title: "[Mejora]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: ¿Qué necesidad resuelve?
+      description: Explica el contexto y a quién afecta.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Resultado propuesto
+      description: Describe el comportamiento esperado.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Criterios de aceptación
+      description: ¿Cómo sabremos que la mejora está completa?
+      placeholder: |
+        - [ ] ...
+    validations:
+      required: true
